@@ -1,9 +1,12 @@
 // L2 Email Workflow - Complete email processing workflow
 
-import { ChatOpenAI } from '@langchain/openai';
+import { ChatOllama } from '@langchain/ollama';
 import z from 'zod';
 
-const llm = new ChatOpenAI({ model: 'gpt-5' });
+const llm = new ChatOllama({
+  model: 'qwen3.8:27b',
+  baseUrl: 'http://localhost:11434',
+});
 
 export const EmailClassificationSchema = z.object({
   intent: z.enum(['question', 'bug', 'billing', 'feature', 'complex']),

@@ -4,7 +4,7 @@ import uuid
 import os
 from typing import Literal, TypedDict
 from IPython.display import Image, display
-from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 from langgraph.types import Command, interrupt
 from langgraph.graph import END, START, StateGraph
 
@@ -39,7 +39,7 @@ def read_email(state: EmailAgentState) -> EmailAgentState:
     """Extract and parse email content"""
     pass
 
-llm = ChatOpenAI(model="gpt-5-mini")
+llm = ChatOllama(model="qwen3.8:27b", base_url="http://localhost:11434")
 
 def classify_intent(state: EmailAgentState) -> EmailAgentState:
     """Use LLM to classify email intent and urgency, then route accordingly"""

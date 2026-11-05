@@ -8,12 +8,13 @@ import {
   MemorySaver,
   interrupt,
 } from '@langchain/langgraph';
-import { ChatOpenAI } from '@langchain/openai';
+import { ChatOllama } from '@langchain/ollama';
 import { generateId } from '../utils.js';
 import z from 'zod';
 
-const llm = new ChatOpenAI({
-  model: 'gpt-5-nano',
+const llm = new ChatOllama({
+  model: 'qwen3.8:27b',
+  baseUrl: 'http://localhost:11434',
 });
 
 export const EmailClassificationSchema = z.object({
@@ -434,8 +435,10 @@ export const graph = new StateGraph(EmailStateDefinition)
   .addNode('classify_intent', classifyIntent)
   .addNode('search_documentation', searchDocumentation)
   .addNode('bug_tracking', bugTracking)
-  .addNode('write_response', writeResponse, {ends: ['human_review', 'send_reply'] })
-  .addNode('human_review', humanReview, {ends: ['send_reply', END] })
+  .addNode('write_response', writeResponse, {
+    ends: ['human_review', 'send_reply'],
+  })
+  .addNode('human_review', humanReview, { ends: ['send_reply', END] })
   .addNode('send_reply', sendReply)
   // Add edges
   .addEdge(START, 'read_email')
