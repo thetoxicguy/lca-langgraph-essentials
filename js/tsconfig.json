@@ -5,6 +5,7 @@
       "ESNext.AsyncIterable"
     ],
     "target": "ESNext",
+    "types": ["node"],
     "module": "Node16",
     "moduleResolution": "Node16",
     "strict": true,

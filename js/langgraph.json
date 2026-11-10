@@ -3,12 +3,12 @@
     "."
   ],
   "graphs": {
+    "email-workflow": "src/L2/email-workflow.ts:graph",
     "01-simple-node": "src/L1/01-simple-node.ts:graph",
     "02-parallel-execution": "src/L1/02-parallel-execution.ts:graph",
     "03-conditional-edges": "src/L1/03-conditional-edges.ts:graph",
     "04-memory": "src/L1/04-memory.ts:graph",
-    "05-interrupts": "src/L1/05-interrupts.ts:graph",
-    "email-workflow": "src/L2/email-workflow-complete.ts:graph"
+    "05-interrupts": "src/L1/05-interrupts.ts:graph"
   },
   "env": ".env"
 }
